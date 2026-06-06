@@ -12,7 +12,16 @@ import commentroutes from "./routes/comment.js";
 dotenv.config();
 const app = express();
 import path from "path";
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://youtube-internship-elevance-git-main-rahul-kumar-s-projects6.vercel.app",
+      "http://localhost:3000",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use("/uploads", express.static(path.join("uploads")));
